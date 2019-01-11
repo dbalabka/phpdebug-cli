@@ -28,7 +28,10 @@ XDebug PHP CLI debugging helper console command with PhpStorm, NetBeans support
    export IDE_SERVERNAME="Any_server_name"
    export IDE_KEY="PHPSTORM"
    ```
-6. Run: source ~/.bashrc
+6. Run use it immediately or just restart terminal: 
+```bash
+   source ~/.bashrc
+```
 
 # Usage
 1. After installation use phpdebug/phpdebugoff commands to start/stop debugging:
