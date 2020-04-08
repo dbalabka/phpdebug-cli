@@ -30,11 +30,14 @@
 export IDE_ZEND_PORT=10137
 export IDE_XDEBUG_PORT=9000
 export IDE_KEY="PHPSTORM"
-export IDE_SERVERNAME="$(hostname)"
+export IDE_SERVERNAME=""
+
+# @see https://github.com/koalaman/shellcheck/wiki/SC2155
+IDE_SERVERNAME=$(hostname)
 
 function _check_xdebug_installed()
 {
-    if ! php -i | egrep -q "(xdebug|zend_debugger)"; then
+    if ! php -i | grep -E -q "(xdebug|zend_debugger)"; then
         echo "Warning! XDebug or Zend Debugger extension not found"
     fi
 }
@@ -60,11 +63,11 @@ function _phpdebug()
     local php_ide_config="serverName=${IDE_SERVERNAME}"
     
     # try to autodetect IP if global variable IDE_IP not set
-    if [ -z ${IDE_IP+x} ]; then
+    if [ -z "$IDE_IP" ]; then
         if [ -z "$SSH_CLIENT" ]; then
            IDE_IP="127.0.0.1";
         else
-           IDE_IP=$( echo $SSH_CLIENT | sed s/\ .*$// );
+           IDE_IP=$( echo "$SSH_CLIENT" | cut -d' ' -f1 );
         fi
     fi
     
@@ -79,7 +82,7 @@ function _phpdebug()
         export XDEBUG_CONFIG="$xdebug_config"
         export PHP_IDE_CONFIG="$php_ide_config"
     else
-        PHP_IDE_CONFIG="$php_ide_config" XDEBUG_CONFIG="$xdebug_config" QUERY_STRING="$zend_debugger_config" php $*
+        PHP_IDE_CONFIG="$php_ide_config" XDEBUG_CONFIG="$xdebug_config" QUERY_STRING="$zend_debugger_config" php "$@"
     fi
 }
 alias phpdebug="_phpdebug"
