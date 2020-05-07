@@ -35,14 +35,14 @@ export IDE_SERVERNAME="$(hostname)"
 function _check_xdebug_installed()
 {
     if ! php -i | egrep -q "(xdebug|zend_debugger)"; then
-        echo "Warning! XDebug or Zend Debugger extension not found"
+        echo "\e[0;31mWarning! XDebug or Zend Debugger extension not found\e[m"
     fi
 }
 
 function _print_settings_info()
 {
-    echo -e "\e[93mXDebug connection is $IDE_IP:$IDE_XDEBUG_PORT and server name '$IDE_SERVERNAME'. Zend Debugger connection is $IDE_IP:$IDE_ZEND_PORT with IDE key '$IDE_KEY'"
-    echo -e "\e[93mAny of this settings can be configured with environment variables: IDE_IP, IDE_XDEBUG_PORT, IDE_SERVERNAME, IDE_ZEND_PORT, IDE_KEY"
+    echo -e "\e[93mXDebug connection is $IDE_IP:$IDE_XDEBUG_PORT and server name '$IDE_SERVERNAME'. Zend Debugger connection is $IDE_IP:$IDE_ZEND_PORT with IDE key '$IDE_KEY'\e[m"
+    echo -e "\e[93mAny of this settings can be configured with environment variables: IDE_IP, IDE_XDEBUG_PORT, IDE_SERVERNAME, IDE_ZEND_PORT, IDE_KEY\e[m"
 }
 
 function _phpdebug()

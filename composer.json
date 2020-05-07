@@ -1,0 +1,9 @@
+{
+    "name": "dbalabka/phpdebug-cli",
+    "description": "XDebug and Zend Debugger PHP CLI debugging helper console command with PhpStorm, NetBeans support",
+    "license": ["MIT"],
+    "suggest": {
+        "ext-xdebug": "You require X-Debug extension to perform CLI scrips debugging."
+    },
+    "bin": ["phpdebug.sh"]
+}
