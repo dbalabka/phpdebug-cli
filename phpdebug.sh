@@ -44,8 +44,8 @@ function _check_xdebug_installed()
 
 function _print_settings_info()
 {
-    echo -e "\e[93mXDebug connection is $IDE_IP:$IDE_XDEBUG_PORT and server name '$IDE_SERVERNAME'. Zend Debugger connection is $IDE_IP:$IDE_ZEND_PORT with IDE key '$IDE_KEY'"
-    echo -e "\e[93mAny of this settings can be configured with environment variables: IDE_IP, IDE_XDEBUG_PORT, IDE_SERVERNAME, IDE_ZEND_PORT, IDE_KEY"
+    echo -e "\e[93mXDebug connection is $IDE_IP:$IDE_XDEBUG_PORT and server name '$IDE_SERVERNAME'. Zend Debugger connection is $IDE_IP:$IDE_ZEND_PORT with IDE key '$IDE_KEY'\e[m"
+    echo -e "\e[93mAny of this settings can be configured with environment variables: IDE_IP, IDE_XDEBUG_PORT, IDE_SERVERNAME, IDE_ZEND_PORT, IDE_KEY\e[m"
 }
 
 function _phpdebug()
